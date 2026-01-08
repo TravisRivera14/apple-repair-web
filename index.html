@@ -3,24 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>iCare Tech CR | Reparación iPhone, Mac y iPad</title>
-  <meta name="description" content="Reparación especializada Apple: iPhone, MacBook, iPad y Apple Watch. Diagnóstico rápido, repuestos de calidad y garantía. Agenda por WhatsApp." />
-  <meta name="theme-color" content="#0a0a0a" />
+  <title>iCare Tech CR | Seguridad + Apple + Computadoras</title>
+  <meta name="description" content="Cámaras y alarmas, reparación especializada en dispositivos Apple y reparación de computadoras en Costa Rica." />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="container header__inner">
-      <a class="logo" href="index.html"> iCare Tech CR</a>
+  <!-- Top nav (minimal, Apple-like) -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top">iCare Tech CR</a>
 
-      <nav class="nav" id="nav">
-        <a href="#servicios">Servicios</a>
-        <a href="#proceso">Proceso</a>
+      <nav class="topnav" id="nav">
+        <a href="#seguridad">Seguridad</a>
+        <a href="#apple">Apple</a>
+        <a href="#computadoras">Computadoras</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <div class="header__actions">
+      <div class="topbar__actions">
         <a class="btn btn--ghost" href="#contacto">Agendar</a>
         <a class="btn btn--primary" id="waTop" href="#">WhatsApp</a>
         <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
@@ -28,123 +30,154 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero__grid">
-        <div>
-          <p class="badge">Especialistas en Apple</p>
-          <h1>Reparación de iPhone, Mac y iPad con garantía</h1>
-          <p class="lead">
-            Diagnóstico claro, repuestos de calidad y atención rápida.
-            Estamos en <strong>Costa Rica</strong>.
+  <main id="top">
+    <!-- HERO: Intro -->
+    <section class="hero hero--intro">
+      <div class="container hero__content reveal">
+        <p class="kicker">Servicio técnico y seguridad</p>
+        <h1 class="headline">Soluciones en seguridad y reparación, con estilo y rapidez.</h1>
+        <p class="subhead">
+          Tres áreas, un solo equipo: <strong>cámaras & alarmas</strong>, <strong>reparación Apple</strong> y <strong>computadoras</strong>.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" id="waHero" href="#">Cotizar por WhatsApp</a>
+          <a class="btn btn--ghost" href="#seguridad">Ver sectores</a>
+        </div>
+
+        <div class="pillRow">
+          <span class="pill">Diagnóstico claro</span>
+          <span class="pill">Garantía según servicio</span>
+          <span class="pill">Atención rápida</span>
+        </div>
+      </div>
+
+      <div class="hero__bg" aria-hidden="true"></div>
+    </section>
+
+    <!-- HERO 1: Seguridad -->
+    <section class="hero hero--split" id="seguridad">
+      <div class="container split">
+        <div class="split__text reveal">
+          <p class="kicker">Seguridad</p>
+          <h2 class="headline">Venta e instalación de cámaras y alarmas.</h2>
+          <p class="subhead">
+            Instalación profesional para hogar y negocio: cámaras, DVR/NVR, acceso remoto, cableado y configuración completa.
           </p>
 
-          <div class="cta">
-            <a class="btn btn--primary" id="waHero" href="#">Agendar por WhatsApp</a>
-            <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+          <div class="ctaRow">
+            <a class="btn btn--primary" id="waSeguridad" href="#">Cotizar seguridad</a>
+            <a class="btn btn--ghost" href="#contacto">Hablar con un asesor</a>
           </div>
 
-          <ul class="trust">
-            <li>✅ Diagnóstico transparente</li>
-            <li>✅ Garantía por escrito</li>
-            <li>✅ Cuidado de datos</li>
+          <ul class="list">
+            <li>Visita y recomendación según tu espacio</li>
+            <li>Instalación + configuración en app</li>
+            <li>Mantenimiento y soporte</li>
           </ul>
         </div>
 
-        <div class="card hero__card">
-          <h3>¿Qué necesitás reparar?</h3>
-          <div class="grid2">
-            <a class="tile" href="#iphone">iPhone</a>
-            <a class="tile" href="#mac">Mac</a>
-            <a class="tile" href="#ipad">iPad</a>
-            <a class="tile" href="#watch">Watch</a>
+        <div class="split__visual reveal">
+          <div class="visualCard">
+            <div class="visualIcon">📹</div>
+            <div class="visualTitle">Cámaras</div>
+            <div class="visualMuted">Interior / exterior • HD / 4K • Acceso remoto</div>
+            <div class="visualDivider"></div>
+            <div class="visualIcon">🚨</div>
+            <div class="visualTitle">Alarmas</div>
+            <div class="visualMuted">Sensores • Sirena • Configuración y soporte</div>
           </div>
-          <p class="muted">Respondo rápido por WhatsApp.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="section__head">
-          <h2>Servicios más comunes</h2>
-          <p class="muted">Cotización tras diagnóstico. Precios varían por modelo.</p>
+    <!-- HERO 2: Apple -->
+    <section class="hero hero--split hero--alt" id="apple">
+      <div class="container split split--reverse">
+        <div class="split__text reveal">
+          <p class="kicker">Apple</p>
+          <h2 class="headline">Reparación especializada en dispositivos Apple.</h2>
+          <p class="subhead">
+            iPhone, iPad y Apple Watch. Diagnóstico, repuestos de calidad y garantía según reparación.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn btn--primary" id="waApple" href="#">Cotizar reparación Apple</a>
+            <a class="btn btn--ghost" href="#contacto">Agendar revisión</a>
+          </div>
+
+          <ul class="list">
+            <li>Pantalla, batería, centro de carga, cámara</li>
+            <li>Limpieza y mantenimiento</li>
+            <li>Entrega con prueba y garantía</li>
+          </ul>
+
+          <p class="fineprint">No afiliados a Apple Inc.</p>
         </div>
 
-        <div class="cards">
-          <article class="card" id="iphone">
-            <h3>iPhone</h3>
-            <p class="muted">Pantalla, batería, centro de carga, cámara, audio, botones y diagnóstico.</p>
-          </article>
-
-          <article class="card" id="mac">
-            <h3>Mac / MacBook</h3>
-            <p class="muted">Mantenimiento, optimización, macOS, SSD (según modelo), batería y diagnóstico.</p>
-          </article>
-
-          <article class="card" id="ipad">
-            <h3>iPad</h3>
-            <p class="muted">Pantalla, batería, carga, botones y revisión general.</p>
-          </article>
-
-          <article class="card" id="watch">
-            <h3>Apple Watch</h3>
-            <p class="muted">Batería, pantalla, carga y diagnóstico.</p>
-          </article>
+        <div class="split__visual reveal">
+          <div class="deviceStack">
+            <div class="device device--phone"></div>
+            <div class="device device--watch"></div>
+            <div class="device device--tablet"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--alt" id="proceso">
-      <div class="container">
-        <div class="section__head">
-          <h2>Así trabajamos</h2>
-          <p class="muted">Simple, claro y sin sorpresas.</p>
+    <!-- HERO 3: Computadoras -->
+    <section class="hero hero--split" id="computadoras">
+      <div class="container split">
+        <div class="split__text reveal">
+          <p class="kicker">Computadoras</p>
+          <h2 class="headline">Reparación y optimización de computadoras.</h2>
+          <p class="subhead">
+            Windows y Mac: mantenimiento, limpieza, rendimiento, respaldo y solución de fallas.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn btn--primary" id="waPC" href="#">Cotizar computadoras</a>
+            <a class="btn btn--ghost" href="#contacto">Consultar</a>
+          </div>
+
+          <ul class="list">
+            <li>Limpieza interna y pasta térmica</li>
+            <li>Instalación de software y drivers</li>
+            <li>Respaldo/recuperación (según caso)</li>
+          </ul>
         </div>
 
-        <ol class="steps">
-          <li><strong>Contacto</strong> por WhatsApp y contás el problema.</li>
-          <li><strong>Diagnóstico</strong> y te damos cotización.</li>
-          <li><strong>Reparación</strong> con repuestos de calidad.</li>
-          <li><strong>Entrega</strong> + garantía.</li>
-        </ol>
+        <div class="split__visual reveal">
+          <div class="visualCard visualCard--pc">
+            <div class="pcScreen"></div>
+            <div class="pcBase"></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="contacto">
-      <div class="container ctaBox">
-        <div>
-          <h2>¿Listo para agendar?</h2>
-          <p class="muted">Decime tu modelo y el problema. Te respondo rápido.</p>
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+      <div class="container contact__inner reveal">
+        <h2 class="headline">¿Listo para cotizar?</h2>
+        <p class="subhead">
+          Escribinos por WhatsApp con: <strong>sector</strong> + <strong>modelo/equipo</strong> + <strong>detalle</strong>.
+        </p>
+        <div class="ctaRow">
+          <a class="btn btn--primary" id="waBottom" href="#">Escribir por WhatsApp</a>
+          <a class="btn btn--ghost" href="#top">Volver arriba</a>
         </div>
-        <a class="btn btn--primary" id="waBottom" href="#">Escribir por WhatsApp</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer__grid">
+    <div class="container footer__inner">
       <div>
-        <div class="logo"> iCare Tech CR</div>
-        <p class="muted">Servicio técnico especializado en dispositivos Apple en Costa Rica.</p>
+        <div class="brandFooter">iCare Tech CR</div>
+        <div class="muted">Costa Rica • Atención por WhatsApp</div>
       </div>
-
-      <div>
-        <h4>Links</h4>
-        <a href="#servicios">Servicios</a><br />
-        <a href="#proceso">Proceso</a><br />
-        <a href="#contacto">Contacto</a>
-      </div>
-
-      <div>
-        <h4>Contacto</h4>
-        <p class="muted">Costa Rica</p>
-        <p class="muted">Horario: Lun–Sáb 9am–6pm</p>
-      </div>
-    </div>
-
-    <div class="container footer__bottom muted">
-      © <span id="year"></span> iCare Tech CR. No afiliados a Apple Inc.
+      <div class="muted">© <span id="year"></span> iCare Tech CR.</div>
     </div>
   </footer>
 
