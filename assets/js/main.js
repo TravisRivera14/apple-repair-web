@@ -1,45 +1,55 @@
-(function () {
-  const WHATSAPP_NUMBER = "50688887777"; // <-- pon tu número real (con 506)
-  const BUSINESS_NAME = "iCare Tech CR";
+// iCare Tech CR - interactions (menu + reveal + WhatsApp link)
+(() => {
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  function waLink(msg) {
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  // Mobile menu
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileNav = document.getElementById("mobileNav");
+
+  const setMenuOpen = (open) => {
+    if (!menuBtn || !mobileNav) return;
+    menuBtn.setAttribute("aria-expanded", String(open));
+    mobileNav.hidden = !open;
+  };
+
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+      setMenuOpen(!isOpen);
+    });
+
+    // Close menu on link click
+    mobileNav.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (link) setMenuOpen(false);
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    });
   }
 
-  // Links generales
-  const generalMsg = `Hola, vengo de la web (${BUSINESS_NAME}). Quiero cotizar.`;
-  ["waTop", "waHero", "waBottom", "waFab"].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.href = waLink(generalMsg);
-  });
+  // Reveal on scroll
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("is-visible");
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-  // Links por sector
-  const seguridad = document.getElementById("waSeguridad");
-  if (seguridad) seguridad.href = waLink("Hola, quiero cotizar CÁMARAS/ALARMAS. Ubicación: __. ¿Cuántas cámaras? __. ¿Interior/exterior? __.");
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  const apple = document.getElementById("waApple");
-  if (apple) apple.href = waLink("Hola, quiero cotizar REPARACIÓN APPLE. Modelo: __. Problema: __. ¿Tuvo golpes/agua? __.");
+  // WhatsApp (cambia el número luego)
+  const WHATSAPP_NUMBER = "50600000000"; // <-- Cambiar luego: 506 + tu número (sin +)
+  const WA_TEXT = encodeURIComponent("Hola, vengo desde iCareTechCR.com. Me gustaría una cotización.");
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${WA_TEXT}`;
 
-  const pc = document.getElementById("waPC");
-  if (pc) pc.href = waLink("Hola, quiero cotizar REPARACIÓN DE COMPUTADORA. Equipo: __. Problema: __. ¿Enciende? __.");
-
-  // Menú móvil
-  const burger = document.getElementById("burger");
-  const nav = document.getElementById("nav");
-  if (burger && nav) burger.addEventListener("click", () => nav.classList.toggle("is-open"));
-
-  // Año
-  const year = document.getElementById("year");
-  if (year) year.textContent = new Date().getFullYear();
-
-  // Scroll reveal (Apple-like smooth)
-  const items = Array.from(document.querySelectorAll(".reveal"));
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add("is-visible");
-    });
-  }, { threshold: 0.18 });
-
-  items.forEach(el => io.observe(el));
-
+  const waLink = document.getElementById("waLink");
+  const fabWa = document.getElementById("fabWa");
+  if (waLink) waLink.href = waUrl;
+  if (fabWa) fabWa.href = waUrl;
 })();
