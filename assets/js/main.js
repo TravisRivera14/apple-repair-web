@@ -1,8 +1,9 @@
 // Año automático
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // WhatsApp (cambia el número aquí)
-const phone = "50688888888"; // ejemplo
+const phone = "50685836365";
 const msg = "Hola, quiero una cotización de iCare Tech CR";
 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
@@ -17,9 +18,9 @@ const mobileNav = document.getElementById("mobileNav");
 
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener("click", () => {
-    const open = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", String(!open));
-    mobileNav.hidden = open;
+    const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+    menuBtn.setAttribute("aria-expanded", String(!isOpen));
+    mobileNav.hidden = isOpen;
   });
 
   // Cierra el menú al dar click en un link
