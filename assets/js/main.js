@@ -1,6 +1,6 @@
 // ===== CONFIG =====
 // Cambia este número cuando quieras (Costa Rica ejemplo: 50688887777)
-const WHATSAPP_NUMBER = "50600000000";
+const WHATSAPP_NUMBER = "50685836365";
 const WHATSAPP_TEXT = "Hola, quiero una cotización. Me interesa:";
 
 // ===== MENU MÓVIL =====
