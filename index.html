@@ -4,20 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#ffffff" />
-  <title>iCare Tech CR | Reparación Apple, PCs, Seguridad</title>
-  <meta name="description" content="iCare Tech CR: reparación especializada en Apple, reparación de computadoras, venta e instalación de cámaras y alarmas de seguridad." />
+  <title>iCare Tech CR | Apple, PCs, Seguridad y Web</title>
+  <meta name="description" content="iCare Tech CR: reparación Apple, reparación de computadoras, venta e instalación de cámaras y alarmas, y creación de páginas web." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Top banner -->
-  <div class="top-banner">
-    <div class="container">
-      <p>Atención rápida • Diagnóstico claro • Soporte confiable</p>
-      <a class="top-banner__cta" href="#contacto">Cotizar</a>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <p class="topbar__text">Atención rápida • Diagnóstico claro • Soporte confiable</p>
+      <a class="topbar__cta" href="#contacto">Cotizar</a>
     </div>
   </div>
 
@@ -26,14 +28,14 @@
     <div class="container header__inner">
       <a class="brand" href="#inicio" aria-label="iCare Tech CR">
         <span class="brand__dot" aria-hidden="true"></span>
-        <span class="brand__text">iCare Tech CR</span>
+        <span class="brand__name">iCare Tech CR</span>
       </a>
 
       <nav class="nav" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Proceso</a>
         <a href="#faq">FAQ</a>
-        <a href="#contacto" class="nav__button">Contacto</a>
+        <a href="#contacto" class="nav__btn">Contacto</a>
       </nav>
 
       <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
@@ -41,7 +43,6 @@
       </button>
     </div>
 
-    <!-- Mobile nav -->
     <div class="mobile" id="mobileNav" hidden>
       <div class="container mobile__inner">
         <a href="#servicios" class="mobile__link">Servicios</a>
@@ -52,12 +53,12 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <main>
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="pill reveal">Servicio técnico y seguridad</p>
+          <p class="pill reveal">Tecnología • Reparación • Seguridad • Web</p>
 
           <h1 class="hero__title reveal">
             Tecnología que funciona.
@@ -65,8 +66,8 @@
           </h1>
 
           <p class="hero__subtitle reveal">
-            Reparación especializada en Apple (iPhone / iPad / Mac), reparación de computadoras
-            y venta e instalación de cámaras y alarmas de seguridad.
+            Reparación especializada en Apple (iPhone / iPad / Mac), reparación de computadoras,
+            venta e instalación de cámaras y alarmas, y creación de páginas web modernas para tu negocio.
           </p>
 
           <div class="hero__cta reveal">
@@ -81,7 +82,7 @@
             </div>
             <div class="stat" role="listitem">
               <p class="stat__kpi">Calidad</p>
-              <p class="stat__desc">Trabajo limpio y profesional</p>
+              <p class="stat__desc">Trabajo limpio</p>
             </div>
             <div class="stat" role="listitem">
               <p class="stat__kpi">Soporte</p>
@@ -90,13 +91,11 @@
           </div>
         </div>
 
-        <!-- Visual card -->
-        <div class="hero__visual reveal">
+        <!-- Visual -->
+        <div class="hero__visual reveal" aria-label="Servicios principales">
           <div class="glass">
             <div class="glass__top">
-              <div class="dots" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
+              <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
               <p class="glass__title">iCare Tech CR</p>
               <p class="glass__tag">Rápido • Confiable • Profesional</p>
             </div>
@@ -114,12 +113,16 @@
                 <p class="chip__label">Área 3</p>
                 <p class="chip__value">Reparación de PCs</p>
               </div>
+              <div class="chip">
+                <p class="chip__label">Área 4</p>
+                <p class="chip__value">Creación de Páginas Web</p>
+              </div>
 
               <div class="line" aria-hidden="true"></div>
 
               <div class="mini">
                 <p class="mini__title">¿Qué hacemos hoy?</p>
-                <p class="mini__text">Te damos un diagnóstico y una ruta de solución.</p>
+                <p class="mini__text">Te damos una ruta clara: diagnóstico, plan y ejecución.</p>
               </div>
             </div>
           </div>
@@ -134,7 +137,7 @@
     <section class="section" id="servicios">
       <div class="container">
         <div class="section__head reveal">
-          <h2 class="section__title">Tres áreas, un solo estándar: calidad.</h2>
+          <h2 class="section__title">Cuatro áreas, un solo estándar: calidad.</h2>
           <p class="section__subtitle">Elige lo que necesitas. Te guiamos en el resto.</p>
         </div>
 
@@ -183,6 +186,21 @@
             </ul>
             <a class="card__link" href="#contacto">Cotizar PC →</a>
           </article>
+
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">🌐</div>
+            <h3 class="card__title">Creación de páginas web</h3>
+            <p class="card__text">
+              Sitios rápidos, modernos y listos para vender: presentación, servicios, WhatsApp,
+              formularios y diseño profesional.
+            </p>
+            <ul class="card__list">
+              <li>Landing page / página empresarial</li>
+              <li>Diseño tipo Apple (limpio y premium)</li>
+              <li>Optimización y soporte</li>
+            </ul>
+            <a class="card__link" href="#contacto">Cotizar web →</a>
+          </article>
         </div>
       </div>
     </section>
@@ -199,22 +217,22 @@
           <div class="step reveal">
             <p class="step__num">01</p>
             <h3 class="step__title">Diagnóstico</h3>
-            <p class="step__text">Revisamos tu equipo o proyecto de seguridad y te damos opciones.</p>
+            <p class="step__text">Revisamos tu equipo/proyecto y te damos opciones.</p>
           </div>
           <div class="step reveal">
             <p class="step__num">02</p>
             <h3 class="step__title">Cotización</h3>
-            <p class="step__text">Precio claro. Si aplica, opciones por prioridad y presupuesto.</p>
+            <p class="step__text">Precio claro. Opciones por prioridad y presupuesto.</p>
           </div>
           <div class="step reveal">
             <p class="step__num">03</p>
             <h3 class="step__title">Trabajo</h3>
-            <p class="step__text">Reparación/instalación con orden, pruebas y checklist final.</p>
+            <p class="step__text">Reparación/instalación/desarrollo con orden y pruebas.</p>
           </div>
           <div class="step reveal">
             <p class="step__num">04</p>
             <h3 class="step__title">Entrega</h3>
-            <p class="step__text">Te entregamos y te explicamos qué se hizo y recomendaciones.</p>
+            <p class="step__text">Te explicamos lo realizado y recomendaciones.</p>
           </div>
         </div>
       </div>
@@ -233,17 +251,20 @@
             <summary>¿Trabajan con cita o por orden de llegada?</summary>
             <p>Podemos agendar. También recibimos por orden de llegada, según disponibilidad.</p>
           </details>
+
           <details class="faq__item reveal">
             <summary>¿Dan diagnóstico antes de reparar?</summary>
             <p>Sí. Primero evaluamos y luego te damos opciones y cotización.</p>
           </details>
+
           <details class="faq__item reveal">
             <summary>¿Instalan cámaras en casas y negocios?</summary>
             <p>Sí. Diseñamos cobertura, instalamos, configuramos y dejamos todo funcionando.</p>
           </details>
+
           <details class="faq__item reveal">
-            <summary>¿El sitio tendrá WhatsApp y contacto directo?</summary>
-            <p>Sí. Abajo te dejo un botón para que nos escribas y un formulario básico.</p>
+            <summary>¿Qué incluye una página web?</summary>
+            <p>Presentación, servicios, botones de contacto (WhatsApp), secciones y diseño profesional. También podemos agregar formulario real y dominio cuando el DNS esté listo.</p>
           </details>
         </div>
       </div>
@@ -261,13 +282,13 @@
           <div class="contact__box">
             <p class="contact__label">WhatsApp</p>
             <a class="contact__value" id="waLink" href="#" target="_blank" rel="noreferrer">Escribir por WhatsApp</a>
-            <p class="hint">Luego cambiamos el número cuando me lo pases.</p>
+            <p class="hint">Luego cambiamos el número por el tuyo.</p>
           </div>
 
           <div class="contact__box">
             <p class="contact__label">Correo</p>
             <a class="contact__value" href="mailto:info@icaretechcr.com">info@icaretechcr.com</a>
-            <p class="hint">Este correo funcionará cuando el dominio y DNS queden listos.</p>
+            <p class="hint">Este correo lo activamos cuando el DNS del dominio esté listo.</p>
           </div>
         </div>
 
@@ -289,6 +310,7 @@
               <option>Cámaras y alarmas</option>
               <option>Reparación Apple</option>
               <option>Reparación de computadoras</option>
+              <option>Creación de páginas web</option>
             </select>
           </label>
 
@@ -298,7 +320,7 @@
           </label>
 
           <button class="btn btn--primary btn--full" type="submit">Enviar</button>
-          <p class="hint">Este formulario es visual. Luego lo conectamos a Netlify Forms si quieres.</p>
+          <p class="hint">Este formulario es visual. Luego lo conectamos a algo real si quieres.</p>
         </form>
       </div>
     </section>
@@ -311,9 +333,7 @@
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a class="fab" id="fabWa" href="#" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-      💬
-    </a>
+    <a class="fab" id="fabWa" href="#" target="_blank" rel="noreferrer" aria-label="WhatsApp">💬</a>
   </main>
 
   <script src="main.js"></script>

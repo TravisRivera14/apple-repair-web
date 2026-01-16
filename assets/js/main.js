@@ -1,55 +1,51 @@
-// iCare Tech CR - interactions (menu + reveal + WhatsApp link)
-(() => {
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+// ===== CONFIG =====
+// Cambia este número cuando quieras (Costa Rica ejemplo: 50688887777)
+const WHATSAPP_NUMBER = "50600000000";
+const WHATSAPP_TEXT = "Hola, quiero una cotización. Me interesa:";
 
-  // Mobile menu
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileNav = document.getElementById("mobileNav");
+// ===== MENU MÓVIL =====
+const menuBtn = document.getElementById("menuBtn");
+const mobileNav = document.getElementById("mobileNav");
 
-  const setMenuOpen = (open) => {
-    if (!menuBtn || !mobileNav) return;
-    menuBtn.setAttribute("aria-expanded", String(open));
-    mobileNav.hidden = !open;
-  };
+function setMobile(open) {
+  menuBtn.setAttribute("aria-expanded", String(open));
+  mobileNav.hidden = !open;
+}
 
-  if (menuBtn && mobileNav) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
-      setMenuOpen(!isOpen);
-    });
+menuBtn?.addEventListener("click", () => {
+  const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+  setMobile(!isOpen);
+});
 
-    // Close menu on link click
-    mobileNav.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (link) setMenuOpen(false);
-    });
+document.querySelectorAll(".mobile__link").forEach(a => {
+  a.addEventListener("click", () => setMobile(false));
+});
 
-    // Close on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    });
-  }
+// ===== WHATSAPP LINKS =====
+function waUrl() {
+  const text = encodeURIComponent(WHATSAPP_TEXT);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
 
-  // Reveal on scroll
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("is-visible");
-      });
-    },
-    { threshold: 0.12 }
-  );
+const waLink = document.getElementById("waLink");
+if (waLink) waLink.href = waUrl();
 
-  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+const fab = document.getElementById("fabWa");
+if (fab) fab.href = waUrl();
 
-  // WhatsApp (cambia el número luego)
-  const WHATSAPP_NUMBER = "50600000000"; // <-- Cambiar luego: 506 + tu número (sin +)
-  const WA_TEXT = encodeURIComponent("Hola, vengo desde iCareTechCR.com. Me gustaría una cotización.");
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${WA_TEXT}`;
+// ===== YEAR =====
+const year = document.getElementById("year");
+if (year) year.textContent = String(new Date().getFullYear());
 
-  const waLink = document.getElementById("waLink");
-  const fabWa = document.getElementById("fabWa");
-  if (waLink) waLink.href = waUrl;
-  if (fabWa) fabWa.href = waUrl;
-})();
+// ===== REVEAL ANIMATION =====
+const els = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add("is-visible");
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.14 });
+
+els.forEach(el => io.observe(el));
