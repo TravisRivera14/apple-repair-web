@@ -18,9 +18,9 @@ const mobileNav = document.getElementById("mobileNav");
 
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener("click", () => {
-    const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", String(!isOpen));
-    mobileNav.hidden = isOpen;
+    const open = menuBtn.getAttribute("aria-expanded") === "true";
+    menuBtn.setAttribute("aria-expanded", String(!open));
+    mobileNav.hidden = open;
   });
 
   // Cierra el menú al dar click en un link
@@ -34,13 +34,15 @@ if (menuBtn && mobileNav) {
 
 // Reveal on scroll
 const items = document.querySelectorAll(".reveal");
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) e.target.classList.add("is-visible");
-    });
-  },
-  { threshold: 0.12 }
-);
+if (items.length) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("is-visible");
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-items.forEach((el) => io.observe(el));
+  items.forEach((el) => io.observe(el));
+}
