@@ -8,7 +8,7 @@ const msg = "Hola, quiero una cotización de iCare Tech CR";
 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
 const waLink = document.getElementById("waLink");
-const fabWa = document.getElementById("fabWa");
+const fabWa  = document.getElementById("fabWa");
 if (waLink) waLink.href = waUrl;
 if (fabWa) fabWa.href = waUrl;
 
