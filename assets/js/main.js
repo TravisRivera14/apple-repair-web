@@ -2,35 +2,25 @@
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===== WhatsApp configuración =====
-// Cambia el número aquí (sin +, sin espacios)
+// WhatsApp (cambia el número aquí)
 const phone = "50685836365";
+const baseMsg = "Hola, quiero una cotización en iCare Tech CR";
+const waBase = `https://wa.me/${phone}?text=${encodeURIComponent(baseMsg)}`;
 
-// Mensaje base
-const baseMsg = "Hola, quiero una cotización con iCare Tech CR.";
-
-// Construye URL a WhatsApp con texto
-function waUrlWithMessage(message) {
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-}
-
-// Links generales (botón de contacto + FAB)
+// Links generales
 const waLink = document.getElementById("waLink");
 const fabWa = document.getElementById("fabWa");
-const genericUrl = waUrlWithMessage(baseMsg);
+if (waLink) waLink.href = waBase;
+if (fabWa) fabWa.href = waBase;
 
-if (waLink) waLink.href = genericUrl;
-if (fabWa) fabWa.href = genericUrl;
-
-// ===== Links de productos (abre WhatsApp con el nombre del producto) =====
-const productLinks = document.querySelectorAll(".js-wa-product");
-
-productLinks.forEach((a) => {
-  const product = a.getAttribute("data-product") || "un producto";
-  const msg = `${baseMsg}\n\nProducto: ${product}\n\n¿Me compartes precio y disponibilidad?`;
-  a.href = waUrlWithMessage(msg);
-  a.target = "_blank";
-  a.rel = "noreferrer";
+// ✅ Botones de tienda: abre WhatsApp con el nombre del producto
+document.querySelectorAll(".product__btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const product = btn.getAttribute("data-product") || "Producto Apple";
+    const msg = `Hola, quiero cotizar este producto: ${product}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+  });
 });
 
 // Menú móvil
@@ -45,8 +35,8 @@ if (menuBtn && mobileNav) {
   });
 
   // Cierra el menú al dar click en un link
-  mobileNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
+  mobileNav.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
       menuBtn.setAttribute("aria-expanded", "false");
       mobileNav.hidden = true;
     });
@@ -64,5 +54,6 @@ if (items.length) {
     },
     { threshold: 0.12 }
   );
+
   items.forEach((el) => io.observe(el));
 }
