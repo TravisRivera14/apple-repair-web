@@ -4,22 +4,29 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // WhatsApp (cambia el número aquí)
 const phone = "50685836365";
-const baseMsg = "Hola, quiero una cotización en iCare Tech CR";
-const waBase = `https://wa.me/${phone}?text=${encodeURIComponent(baseMsg)}`;
 
-// Links generales
+// Mensaje base
+const baseMsg = "Hola, quiero una cotización de iCare Tech CR";
+
+// URL base
+const waBase = `https://wa.me/${phone}?text=`;
+
+// Links generales (botón de contacto + fab)
 const waLink = document.getElementById("waLink");
 const fabWa = document.getElementById("fabWa");
-if (waLink) waLink.href = waBase;
-if (fabWa) fabWa.href = waBase;
+const defaultUrl = waBase + encodeURIComponent(baseMsg);
 
-// ✅ Botones de tienda: abre WhatsApp con el nombre del producto
-document.querySelectorAll(".product__btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
+if (waLink) waLink.href = defaultUrl;
+if (fabWa) fabWa.href = defaultUrl;
+
+// ✅ Botones de productos: abre WhatsApp con nombre del producto
+document.querySelectorAll("[data-product]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
     const product = btn.getAttribute("data-product") || "Producto Apple";
-    const msg = `Hola, quiero cotizar este producto: ${product}`;
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    window.open(url, "_blank");
+    const msg = `Hola, quiero cotizar: ${product} (iCare Tech CR)`;
+    const url = waBase + encodeURIComponent(msg);
+    window.open(url, "_blank", "noopener,noreferrer");
   });
 });
 
