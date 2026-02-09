@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ RUTA RELATIVA CORRECTA -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
@@ -28,7 +27,6 @@
   <header class="header" id="inicio">
     <div class="container header__inner">
       <a class="brand" href="#inicio" aria-label="iCare Tech CR">
-        <!-- ✅ Logo pequeño a la par del nombre -->
         <img src="assets/img/logo.png" alt="Logo iCare Tech CR" class="brand__logo">
         <span class="brand__text">iCare Tech CR</span>
       </a>
@@ -72,7 +70,7 @@
 
           <p class="hero__subtitle reveal">
             Reparación Apple (iPhone / iPad / Mac), reparación de computadoras,
-            cámaras y alarmas de seguridad, creación de páginas web modernas y venta de dispositivos Apple.
+            cámaras y alarmas de seguridad, y creación de páginas web modernas.
           </p>
 
           <div class="hero__cta reveal">
@@ -152,7 +150,9 @@
           <article class="card reveal">
             <div class="card__icon" aria-hidden="true">📷</div>
             <h3 class="card__title">Cámaras y alarmas</h3>
-            <p class="card__text">Venta e instalación. Diseñamos la solución según tu casa o negocio.</p>
+            <p class="card__text">
+              Venta e instalación. Diseñamos la solución según tu casa o negocio.
+            </p>
             <ul class="card__list">
               <li>Instalación y configuración</li>
               <li>Recomendación según presupuesto</li>
@@ -164,7 +164,9 @@
           <article class="card reveal">
             <div class="card__icon" aria-hidden="true"></div>
             <h3 class="card__title">Reparación Apple</h3>
-            <p class="card__text">iPhone, iPad y Mac. Diagnóstico y reparación con pruebas finales.</p>
+            <p class="card__text">
+              iPhone, iPad y Mac. Diagnóstico y reparación con pruebas finales.
+            </p>
             <ul class="card__list">
               <li>Diagnóstico y solución</li>
               <li>Optimización y limpieza</li>
@@ -176,7 +178,9 @@
           <article class="card reveal">
             <div class="card__icon" aria-hidden="true">🖥️</div>
             <h3 class="card__title">Reparación de computadoras</h3>
-            <p class="card__text">PCs y laptops: rendimiento, software, hardware y mantenimiento.</p>
+            <p class="card__text">
+              PCs y laptops: rendimiento, software, hardware y mantenimiento.
+            </p>
             <ul class="card__list">
               <li>Instalación y optimización</li>
               <li>Respaldo y recuperación</li>
@@ -188,7 +192,9 @@
           <article class="card reveal">
             <div class="card__icon" aria-hidden="true">🌐</div>
             <h3 class="card__title">Creación de páginas web</h3>
-            <p class="card__text">Sitios modernos, rápidos y listos para vender (móvil + SEO básico).</p>
+            <p class="card__text">
+              Sitios modernos, rápidos y listos para vender (móvil + SEO básico).
+            </p>
             <ul class="card__list">
               <li>Diseño profesional</li>
               <li>Landing / catálogo</li>
@@ -200,155 +206,191 @@
       </div>
     </section>
 
-    <!-- ✅ Venta Apple (Acordeón + Catálogo) -->
+    <!-- ✅ Venta Apple -->
     <section class="section section--soft" id="venta-apple">
       <div class="container">
         <div class="section__head reveal">
           <h2 class="section__title">Venta de dispositivos Apple</h2>
-          <p class="section__subtitle">Toca una categoría para ver disponibilidad. “Quiero cotizar este” abre WhatsApp con el producto.</p>
+          <p class="section__subtitle">
+            Tocá una categoría para ver disponibilidad. “Quiero cotizar este” abre WhatsApp con el nombre del producto.
+          </p>
         </div>
 
         <div class="catalog reveal">
           <!-- iPhone -->
-          <details class="catalog__group" open>
-            <summary class="catalog__summary">
-              <span class="catalog__left">
-                <span class="catalog__badge">📱</span>
-                <span class="catalog__name">iPhone</span>
+          <details class="cat">
+            <summary class="cat__head">
+              <span class="cat__left">
+                <span class="cat__icon">📱</span>
+                <span class="cat__title">iPhone</span>
               </span>
-              <span class="catalog__right">Ver catálogo</span>
+              <span class="cat__cta">Ver catálogo</span>
             </summary>
 
-            <div class="catalog__items">
-              <article class="product">
-                <div class="product__img">
-                  <img src="assets/img/products/iphone-15-pro.png" alt="iPhone 15 Pro" loading="lazy">
-                </div>
-                <div class="product__body">
-                  <h3 class="product__title">iPhone 15 Pro</h3>
-                  <p class="product__meta">256GB • Negro Titanio</p>
-                  <a class="btn btn--primary product__cta" href="#" data-product="iPhone 15 Pro 256GB Negro Titanio">Quiero cotizar este</a>
-                </div>
-              </article>
+            <div class="cat__body">
+              <div class="prod-grid">
+                <article class="prod">
+                  <div class="prod__imgwrap">
+                    <img class="prod__img" src="assets/img/products/iphone-15-pro.png" alt="iPhone 15 Pro">
+                  </div>
+                  <div class="prod__info">
+                    <h3 class="prod__name">iPhone 15 Pro</h3>
+                    <p class="prod__meta">256GB • Negro Titanio</p>
+                    <p class="prod__price">₡—</p>
+                    <button class="btn btn--primary btn--full wa-product" type="button"
+                      data-product="iPhone 15 Pro (256GB • Negro Titanio)">
+                      Quiero cotizar este
+                    </button>
+                  </div>
+                </article>
 
-              <article class="product">
-                <div class="product__img">
-                  <img src="assets/img/products/iphone-15.png" alt="iPhone 15" loading="lazy">
-                </div>
-                <div class="product__body">
-                  <h3 class="product__title">iPhone 15</h3>
-                  <p class="product__meta">128GB • Azul</p>
-                  <a class="btn btn--primary product__cta" href="#" data-product="iPhone 15 128GB Azul">Quiero cotizar este</a>
-                </div>
-              </article>
+                <article class="prod">
+                  <div class="prod__imgwrap">
+                    <img class="prod__img" src="assets/img/products/iphone-15.png" alt="iPhone 15">
+                  </div>
+                  <div class="prod__info">
+                    <h3 class="prod__name">iPhone 15</h3>
+                    <p class="prod__meta">128GB • Azul</p>
+                    <p class="prod__price">₡—</p>
+                    <button class="btn btn--primary btn--full wa-product" type="button"
+                      data-product="iPhone 15 (128GB • Azul)">
+                      Quiero cotizar este
+                    </button>
+                  </div>
+                </article>
+              </div>
             </div>
           </details>
 
           <!-- iPad -->
-          <details class="catalog__group">
-            <summary class="catalog__summary">
-              <span class="catalog__left">
-                <span class="catalog__badge">📟</span>
-                <span class="catalog__name">iPad</span>
+          <details class="cat">
+            <summary class="cat__head">
+              <span class="cat__left">
+                <span class="cat__icon">📲</span>
+                <span class="cat__title">iPad</span>
               </span>
-              <span class="catalog__right">Ver catálogo</span>
+              <span class="cat__cta">Ver catálogo</span>
             </summary>
 
-            <div class="catalog__items">
-              <article class="product">
-                <div class="product__img">
-                  <img src="assets/img/products/ipad.png" alt="iPad" loading="lazy">
-                </div>
-                <div class="product__body">
-                  <h3 class="product__title">iPad</h3>
-                  <p class="product__meta">Modelos disponibles • Consultar</p>
-                  <a class="btn btn--primary product__cta" href="#" data-product="iPad (consultar modelos disponibles)">Quiero cotizar este</a>
-                </div>
-              </article>
+            <div class="cat__body">
+              <div class="prod-grid">
+                <article class="prod">
+                  <div class="prod__imgwrap">
+                    <img class="prod__img" src="assets/img/products/ipad.png" alt="iPad">
+                  </div>
+                  <div class="prod__info">
+                    <h3 class="prod__name">iPad</h3>
+                    <p class="prod__meta">Wi-Fi • 64GB</p>
+                    <p class="prod__price">₡—</p>
+                    <button class="btn btn--primary btn--full wa-product" type="button"
+                      data-product="iPad (Wi-Fi • 64GB)">
+                      Quiero cotizar este
+                    </button>
+                  </div>
+                </article>
+              </div>
             </div>
           </details>
 
           <!-- AirPods -->
-          <details class="catalog__group">
-            <summary class="catalog__summary">
-              <span class="catalog__left">
-                <span class="catalog__badge">🎧</span>
-                <span class="catalog__name">AirPods</span>
+          <details class="cat">
+            <summary class="cat__head">
+              <span class="cat__left">
+                <span class="cat__icon">🎧</span>
+                <span class="cat__title">AirPods</span>
               </span>
-              <span class="catalog__right">Ver catálogo</span>
+              <span class="cat__cta">Ver catálogo</span>
             </summary>
 
-            <div class="catalog__items">
-              <article class="product">
-                <div class="product__img">
-                  <img src="assets/img/products/airpods.png" alt="AirPods" loading="lazy">
-                </div>
-                <div class="product__body">
-                  <h3 class="product__title">AirPods</h3>
-                  <p class="product__meta">Modelos disponibles • Consultar</p>
-                  <a class="btn btn--primary product__cta" href="#" data-product="AirPods (consultar modelos disponibles)">Quiero cotizar este</a>
-                </div>
-              </article>
+            <div class="cat__body">
+              <div class="prod-grid">
+                <article class="prod">
+                  <div class="prod__imgwrap">
+                    <img class="prod__img" src="assets/img/products/airpods.png" alt="AirPods">
+                  </div>
+                  <div class="prod__info">
+                    <h3 class="prod__name">AirPods</h3>
+                    <p class="prod__meta">Originales • Garantía</p>
+                    <p class="prod__price">₡—</p>
+                    <button class="btn btn--primary btn--full wa-product" type="button"
+                      data-product="AirPods (Originales • Garantía)">
+                      Quiero cotizar este
+                    </button>
+                  </div>
+                </article>
+              </div>
             </div>
           </details>
 
           <!-- Mac -->
-          <details class="catalog__group">
-            <summary class="catalog__summary">
-              <span class="catalog__left">
-                <span class="catalog__badge">💻</span>
-                <span class="catalog__name">Mac</span>
+          <details class="cat">
+            <summary class="cat__head">
+              <span class="cat__left">
+                <span class="cat__icon">💻</span>
+                <span class="cat__title">Mac</span>
               </span>
-              <span class="catalog__right">Ver catálogo</span>
+              <span class="cat__cta">Ver catálogo</span>
             </summary>
 
-            <div class="catalog__items">
-              <article class="product">
-                <div class="product__img">
-                  <img src="assets/img/products/macbook.png" alt="MacBook" loading="lazy">
-                </div>
-                <div class="product__body">
-                  <h3 class="product__title">MacBook</h3>
-                  <p class="product__meta">Modelos disponibles • Consultar</p>
-                  <a class="btn btn--primary product__cta" href="#" data-product="MacBook (consultar modelos disponibles)">Quiero cotizar este</a>
-                </div>
-              </article>
+            <div class="cat__body">
+              <div class="prod-grid">
+                <article class="prod">
+                  <div class="prod__imgwrap">
+                    <img class="prod__img" src="assets/img/products/macbook.png" alt="MacBook">
+                  </div>
+                  <div class="prod__info">
+                    <h3 class="prod__name">MacBook</h3>
+                    <p class="prod__meta">Air/Pro • Consultar</p>
+                    <p class="prod__price">₡—</p>
+                    <button class="btn btn--primary btn--full wa-product" type="button"
+                      data-product="MacBook (Air/Pro • Consultar)">
+                      Quiero cotizar este
+                    </button>
+                  </div>
+                </article>
+              </div>
             </div>
           </details>
 
           <!-- Accesorios -->
-          <details class="catalog__group">
-            <summary class="catalog__summary">
-              <span class="catalog__left">
-                <span class="catalog__badge">🔌</span>
-                <span class="catalog__name">Accesorios</span>
+          <details class="cat">
+            <summary class="cat__head">
+              <span class="cat__left">
+                <span class="cat__icon">🔌</span>
+                <span class="cat__title">Accesorios</span>
               </span>
-              <span class="catalog__right">Ver catálogo</span>
+              <span class="cat__cta">Ver catálogo</span>
             </summary>
 
-            <div class="catalog__items">
-              <article class="product">
-                <div class="product__img">
-                  <img src="assets/img/products/cargadores.png" alt="Accesorios Apple" loading="lazy">
-                </div>
-                <div class="product__body">
-                  <h3 class="product__title">Cargadores & cables</h3>
-                  <p class="product__meta">USB-C / MagSafe • Consultar</p>
-                  <a class="btn btn--primary product__cta" href="#" data-product="Accesorios Apple (cargadores/cables)">Quiero cotizar este</a>
-                </div>
-              </article>
+            <div class="cat__body">
+              <div class="prod-grid">
+                <article class="prod">
+                  <div class="prod__imgwrap">
+                    <img class="prod__img" src="assets/img/products/cargadores.png" alt="Cargadores y cables">
+                  </div>
+                  <div class="prod__info">
+                    <h3 class="prod__name">Cables y cargadores</h3>
+                    <p class="prod__meta">USB-C / Lightning • Original/Calidad</p>
+                    <p class="prod__price">₡—</p>
+                    <button class="btn btn--primary btn--full wa-product" type="button"
+                      data-product="Accesorios: Cables y cargadores (USB-C / Lightning)">
+                      Quiero cotizar este
+                    </button>
+                  </div>
+                </article>
+              </div>
             </div>
           </details>
         </div>
 
-        <p class="hint reveal" style="margin-top:12px">
-          Tip: si una imagen no carga, revisa que el nombre del archivo sea EXACTO (minúsculas/mayúsculas) y esté en <b>assets/img/products/</b>.
+        <p class="hint reveal" style="margin-top:12px;">
+          Tip: cambiá “₡—” por tus precios y editá los nombres cuando quieras.
         </p>
       </div>
     </section>
 
     <!-- Process -->
-    <section class="section" id="proceso">
+    <section class="section section--soft" id="proceso">
       <div class="container">
         <div class="section__head reveal">
           <h2 class="section__title">Proceso simple. Resultado profesional.</h2>
@@ -400,10 +442,6 @@
           <details class="faq__item reveal">
             <summary>¿También hacen páginas web?</summary>
             <p>Sí. Hacemos landing pages y sitios modernos con WhatsApp y SEO básico.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Venden dispositivos Apple?</summary>
-            <p>Sí. Puedes ver el catálogo y cotizar por WhatsApp con el producto.</p>
           </details>
         </div>
       </div>
@@ -475,7 +513,6 @@
     </a>
   </main>
 
-  <!-- ✅ RUTA RELATIVA CORRECTA -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -4,28 +4,20 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // WhatsApp (cambia el número aquí)
 const phone = "50685836365";
-
-// Mensaje base
 const baseMsg = "Hola, quiero una cotización de iCare Tech CR";
+const waBase = `https://wa.me/${phone}?text=${encodeURIComponent(baseMsg)}`;
 
-// URL base
-const waBase = `https://wa.me/${phone}?text=`;
-
-// Links generales (botón de contacto + fab)
 const waLink = document.getElementById("waLink");
 const fabWa = document.getElementById("fabWa");
-const defaultUrl = waBase + encodeURIComponent(baseMsg);
+if (waLink) waLink.href = waBase;
+if (fabWa) fabWa.href = waBase;
 
-if (waLink) waLink.href = defaultUrl;
-if (fabWa) fabWa.href = defaultUrl;
-
-// ✅ Botones de productos: abre WhatsApp con nombre del producto
-document.querySelectorAll("[data-product]").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
+// Botones "Quiero cotizar este" (productos)
+document.querySelectorAll(".wa-product").forEach((btn) => {
+  btn.addEventListener("click", () => {
     const product = btn.getAttribute("data-product") || "Producto Apple";
-    const msg = `Hola, quiero cotizar: ${product} (iCare Tech CR)`;
-    const url = waBase + encodeURIComponent(msg);
+    const msg = `Hola, quiero cotizar: ${product}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank", "noopener,noreferrer");
   });
 });
