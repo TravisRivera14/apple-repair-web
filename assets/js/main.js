@@ -1,26 +1,25 @@
-// Año automático
+// ====== CONFIG ======
+const PHONE = "50685836365"; // <-- tu WhatsApp (sin +)
+const DEFAULT_MSG = "Hola, quiero una cotización de iCare Tech CR";
+
+// Año
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// WhatsApp (cambia el número aquí)
-const phone = "50685836365";
-const baseMsg = "Hola, quiero una cotización de iCare Tech CR";
-const waBase = `https://wa.me/${phone}?text=${encodeURIComponent(baseMsg)}`;
+// WhatsApp helpers
+function waLink(message){
+  return "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(message);
+}
+function openWA(message){
+  window.open(waLink(message), "_blank", "noopener");
+}
 
-const waLink = document.getElementById("waLink");
-const fabWa = document.getElementById("fabWa");
-if (waLink) waLink.href = waBase;
-if (fabWa) fabWa.href = waBase;
+// Botones cotizar
+const btnCotizarTop = document.getElementById("btnCotizarTop");
+if (btnCotizarTop) btnCotizarTop.addEventListener("click", () => openWA(DEFAULT_MSG));
 
-// Botones "Quiero cotizar este" (productos)
-document.querySelectorAll(".wa-product").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const product = btn.getAttribute("data-product") || "Producto Apple";
-    const msg = `Hola, quiero cotizar: ${product}`;
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  });
-});
+const btnCotizarHero = document.getElementById("btnCotizarHero");
+if (btnCotizarHero) btnCotizarHero.addEventListener("click", () => openWA(DEFAULT_MSG));
 
 // Menú móvil
 const menuBtn = document.getElementById("menuBtn");
@@ -28,31 +27,33 @@ const mobileNav = document.getElementById("mobileNav");
 
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener("click", () => {
-    const open = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", String(!open));
-    mobileNav.hidden = open;
+    const isOpen = mobileNav.classList.toggle("show");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Cierra el menú al dar click en un link
-  mobileNav.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      menuBtn.setAttribute("aria-expanded", "false");
-      mobileNav.hidden = true;
-    });
+  mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    mobileNav.classList.remove("show");
+    menuBtn.setAttribute("aria-expanded", "false");
+  }));
+}
+
+// Accordion (Venta Apple)
+document.querySelectorAll(".acc").forEach(acc => {
+  const head = acc.querySelector(".accHead");
+  if (!head) return;
+
+  head.addEventListener("click", () => {
+    // Cierra otros
+    document.querySelectorAll(".acc").forEach(o => { if (o !== acc) o.classList.remove("open"); });
+    // Abre el seleccionado
+    acc.classList.add("open");
   });
-}
+});
 
-// Reveal on scroll
-const items = document.querySelectorAll(".reveal");
-if (items.length) {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("is-visible");
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  items.forEach((el) => io.observe(el));
-}
+// Botones de productos -> WhatsApp con nombre del producto
+document.querySelectorAll(".pBtn[data-product]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const prod = btn.getAttribute("data-product") || "Producto Apple";
+    openWA("Hola, quiero cotizar este producto: " + prod);
+  });
+});

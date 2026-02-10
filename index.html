@@ -2,517 +2,682 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b0f14" />
-  <title>iCare Tech CR | Apple, PCs, Seguridad y Web</title>
-  <meta name="description" content="iCare Tech CR: reparación Apple, reparación de computadoras, cámaras y alarmas de seguridad, creación de páginas web y venta de dispositivos Apple." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iCare Tech CR</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- ✅ TODO embebido (CSS + JS) para que NO se vea “pelado” aunque falle assets/ -->
+  <style>
+    :root{
+      --bg:#070b12;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.12);
+      --text:#e9eefc;
+      --muted:rgba(233,238,252,.72);
+      --brand:#40e0d0;
+      --brand2:#5ad7ff;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 15% 25%, rgba(64,224,208,.22), transparent 55%),
+        radial-gradient(900px 600px at 85% 70%, rgba(90,215,255,.16), transparent 55%),
+        linear-gradient(180deg, #05070c 0%, #060a12 60%, #070b12 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(5,8,14,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(64,224,208,.9), rgba(64,224,208,.25) 55%, rgba(255,255,255,.08) 85%);
+      box-shadow: 0 12px 26px rgba(64,224,208,.12);
+      overflow:hidden;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .nav{
+      display:flex; align-items:center; gap:14px;
+      font-size:14px; color:var(--muted);
+    }
+    .nav a{padding:8px 10px; border-radius:999px}
+    .nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:650;
+      font-size:14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      cursor:pointer;
+    }
+    .btn:hover{background:rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(64,224,208,.35);
+      background: linear-gradient(180deg, rgba(64,224,208,.22), rgba(64,224,208,.10));
+    }
+    .hero{
+      padding:54px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:center;
+    }
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns:1fr}
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    h1{
+      margin:16px 0 12px;
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height:1.02;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      color:var(--muted);
+      line-height:1.5;
+      max-width:58ch;
+      font-size:15.5px;
+    }
+    .cards3{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    @media (max-width: 720px){
+      .cards3{grid-template-columns:1fr}
+    }
+    .miniCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--r);
+      padding:14px 14px;
+    }
+    .miniCard b{display:block; margin-bottom:6px}
+    .miniCard span{color:var(--muted); font-size:13.5px}
+    .phoneMock{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      padding:16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .phoneMock:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 20% 30%, rgba(64,224,208,.22), transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(90,215,255,.18), transparent 50%);
+      filter: blur(16px);
+      pointer-events:none;
+    }
+    .phoneInner{position:relative}
+    .phoneTitle{font-weight:800; margin-bottom:2px}
+    .phoneSmall{color:var(--muted); font-size:12.5px; margin-bottom:12px}
+    .list{
+      display:grid; gap:10px;
+    }
+    .list .item{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      border-radius: 14px;
+      padding:12px 12px;
+    }
+    .item .k{color:var(--muted); font-size:12px}
+    .item .v{font-weight:800; margin-top:2px}
+    .section{
+      padding:34px 0;
+    }
+    .section h2{
+      margin:0 0 8px;
+      font-size:28px;
+      letter-spacing:-.3px;
+    }
+    .section p{margin:0; color:var(--muted)}
+    /* Venta Apple */
+    .saleWrap{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 22px;
+      padding:14px;
+    }
+    .accordion{
+      display:grid; gap:12px;
+      margin-top:14px;
+    }
+    .acc{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 18px;
+      overflow:hidden;
+    }
+    .accHead{
+      width:100%;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      padding:14px 14px;
+      cursor:pointer;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:0;
+      color:var(--text);
+      text-align:left;
+    }
+    .accLeft{display:flex; align-items:center; gap:12px; min-width:0}
+    .accIcon{
+      width:34px; height:34px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .accIcon img{width:22px; height:22px; object-fit:contain; display:block}
+    .accTitle{font-weight:850; letter-spacing:.1px}
+    .accHint{color:var(--muted); font-size:13px}
+    .accRight{
+      color:var(--muted);
+      font-size:13px;
+      display:flex; align-items:center; gap:10px;
+      flex:0 0 auto;
+    }
+    .chev{
+      width:26px; height:26px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.04);
+      transition: transform .22s ease;
+    }
+    .acc.open .chev{transform: rotate(180deg)}
+    .accBody{
+      display:none;
+      padding:14px 14px 16px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .acc.open .accBody{display:block}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:12px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width: 520px){ .grid{grid-template-columns: 1fr;} }
+    .pCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      overflow:hidden;
+      display:flex; flex-direction:column;
+      min-height: 240px;
+    }
+    .pImg{
+      height:140px;
+      background: radial-gradient(circle at 30% 30%, rgba(64,224,208,.18), rgba(255,255,255,.03) 55%, rgba(0,0,0,.10) 100%);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .pImg img{width:100%; height:100%; object-fit:cover; display:block}
+    .pBody{padding:12px 12px 14px; display:grid; gap:8px}
+    .pName{font-weight:900}
+    .pMeta{color:var(--muted); font-size:13px}
+    .pBtn{
+      margin-top:auto;
+      width:100%;
+      border:1px solid rgba(64,224,208,.30);
+      background: linear-gradient(180deg, rgba(64,224,208,.18), rgba(64,224,208,.08));
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      font-weight:850;
+      cursor:pointer;
+    }
+    .pBtn:hover{filter:brightness(1.06)}
+    .footer{
+      padding:28px 0 36px;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:20px;
+      font-size:13px;
+    }
+    /* Mobile menu simple */
+    .menuBtn{display:none}
+    @media (max-width: 820px){
+      .nav{display:none}
+      .menuBtn{display:inline-flex}
+      .mobileNav{
+        display:none;
+        border-top:1px solid rgba(255,255,255,.08);
+        padding:10px 0 14px;
+      }
+      .mobileNav a{display:block; padding:10px 10px; border-radius:12px; color:var(--muted)}
+      .mobileNav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+      .mobileNav.show{display:block}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Top banner -->
-  <div class="top-banner">
-    <div class="container top-banner__inner">
-      <p class="top-banner__text">Atención rápida • Diagnóstico claro • Soporte confiable</p>
-      <a class="top-banner__cta" href="#contacto">Cotizar</a>
-    </div>
-  </div>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <!-- Si tenés logo en assets/img/logo.png, se muestra -->
+            <img src="assets/img/logo.png" alt="" onerror="this.style.display='none'">
+          </div>
+          <span>iCare Tech CR</span>
+        </div>
 
-  <!-- Header -->
-  <header class="header" id="inicio">
-    <div class="container header__inner">
-      <a class="brand" href="#inicio" aria-label="iCare Tech CR">
-        <img src="assets/img/logo.png" alt="Logo iCare Tech CR" class="brand__logo">
-        <span class="brand__text">iCare Tech CR</span>
-      </a>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="#servicios">Servicios</a>
+          <a href="#venta">Venta Apple</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
 
-      <nav class="nav" aria-label="Navegación principal">
+        <div class="cta">
+          <button class="btn menuBtn" id="menuBtn" aria-expanded="false">Menú</button>
+          <button class="btn primary" id="btnCotizarTop">Cotizar</button>
+        </div>
+      </div>
+
+      <div class="mobileNav" id="mobileNav" aria-label="Menú móvil">
         <a href="#servicios">Servicios</a>
-        <a href="#venta-apple">Venta Apple</a>
+        <a href="#venta">Venta Apple</a>
         <a href="#proceso">Proceso</a>
         <a href="#faq">FAQ</a>
-        <a href="#contacto" class="nav__button">Contacto</a>
-      </nav>
-
-      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Mobile nav -->
-    <div class="mobile" id="mobileNav" hidden>
-      <div class="container mobile__inner">
-        <a href="#servicios" class="mobile__link">Servicios</a>
-        <a href="#venta-apple" class="mobile__link">Venta Apple</a>
-        <a href="#proceso" class="mobile__link">Proceso</a>
-        <a href="#faq" class="mobile__link">FAQ</a>
-        <a href="#contacto" class="mobile__link mobile__link--cta">Contacto</a>
+        <a href="#contacto">Contacto</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="pill reveal">Tecnología • Reparación • Seguridad • Web</p>
+      <div class="wrap">
+        <div class="heroGrid">
+          <div>
+            <div class="pill">Tecnología • Reparación • Seguridad • Web</div>
+            <h1>Tecnología que funciona. <span style="color:rgba(233,238,252,.65)">Soporte que se siente.</span></h1>
+            <p class="sub">
+              Reparación Apple (iPhone / iPad / Mac), reparación de computadoras, cámaras y alarmas de seguridad,
+              creación de páginas web modernas y <b>venta de dispositivos Apple</b>.
+            </p>
 
-          <h1 class="hero__title reveal">
-            Tecnología que funciona.
-            <span class="muted">Soporte que se siente.</span>
-          </h1>
-
-          <p class="hero__subtitle reveal">
-            Reparación Apple (iPhone / iPad / Mac), reparación de computadoras,
-            cámaras y alarmas de seguridad, y creación de páginas web modernas.
-          </p>
-
-          <div class="hero__cta reveal">
-            <a class="btn btn--primary" href="#servicios">Ver servicios</a>
-            <a class="btn btn--ghost" href="#contacto">Pedir cotización</a>
-          </div>
-
-          <div class="hero__stats reveal" role="list" aria-label="Beneficios">
-            <div class="stat" role="listitem">
-              <p class="stat__kpi">Diagnóstico</p>
-              <p class="stat__desc">Claro y sin rodeos</p>
+            <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
+              <a class="btn primary" href="#servicios">Ver servicios</a>
+              <button class="btn" id="btnCotizarHero">Pedir cotización</button>
             </div>
-            <div class="stat" role="listitem">
-              <p class="stat__kpi">Calidad</p>
-              <p class="stat__desc">Trabajo limpio y profesional</p>
-            </div>
-            <div class="stat" role="listitem">
-              <p class="stat__kpi">Soporte</p>
-              <p class="stat__desc">Te acompañamos</p>
+
+            <div class="cards3">
+              <div class="miniCard"><b>Diagnóstico</b><span>Claro y sin rodeos</span></div>
+              <div class="miniCard"><b>Calidad</b><span>Trabajo limpio y profesional</span></div>
+              <div class="miniCard"><b>Soporte</b><span>Te acompañamos</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Visual -->
-        <div class="hero__visual reveal">
-          <div class="glass">
-            <div class="glass__top">
-              <div class="dots" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-              <p class="glass__title">iCare Tech CR</p>
-              <p class="glass__tag">Rápido • Confiable • Profesional</p>
-            </div>
-
-            <div class="glass__body">
-              <div class="chip">
-                <p class="chip__label">Área 1</p>
-                <p class="chip__value">Cámaras & Alarmas</p>
-              </div>
-              <div class="chip">
-                <p class="chip__label">Área 2</p>
-                <p class="chip__value">Reparación Apple</p>
-              </div>
-              <div class="chip">
-                <p class="chip__label">Área 3</p>
-                <p class="chip__value">Reparación de PCs</p>
-              </div>
-              <div class="chip">
-                <p class="chip__label">Área 4</p>
-                <p class="chip__value">Páginas Web</p>
-              </div>
-
-              <div class="line" aria-hidden="true"></div>
-
-              <div class="mini">
-                <p class="mini__title">¿Qué hacemos hoy?</p>
-                <p class="mini__text">Te damos diagnóstico, plan y ejecución.</p>
+          <div class="phoneMock" aria-hidden="true">
+            <div class="phoneInner">
+              <div class="phoneTitle">iCare Tech CR</div>
+              <div class="phoneSmall">Rápido • Confiable • Profesional</div>
+              <div class="list">
+                <div class="item"><div class="k">Área 1</div><div class="v">Cámaras & Alarmas</div></div>
+                <div class="item"><div class="k">Área 2</div><div class="v">Reparación Apple</div></div>
+                <div class="item"><div class="k">Área 3</div><div class="v">Reparación de PCs</div></div>
+                <div class="item"><div class="k">Área 4</div><div class="v">Páginas Web</div></div>
+                <div class="item"><div class="k">Área 5</div><div class="v">Venta Apple</div></div>
               </div>
             </div>
           </div>
 
-          <div class="orb orb--a" aria-hidden="true"></div>
-          <div class="orb orb--b" aria-hidden="true"></div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
     <section class="section" id="servicios">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2 class="section__title">Cuatro áreas, un solo estándar: calidad.</h2>
-          <p class="section__subtitle">Elige lo que necesitas. Te guiamos en el resto.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">📷</div>
-            <h3 class="card__title">Cámaras y alarmas</h3>
-            <p class="card__text">
-              Venta e instalación. Diseñamos la solución según tu casa o negocio.
-            </p>
-            <ul class="card__list">
-              <li>Instalación y configuración</li>
-              <li>Recomendación según presupuesto</li>
-              <li>Soporte y mantenimiento</li>
-            </ul>
-            <a class="card__link" href="#contacto">Cotizar seguridad →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true"></div>
-            <h3 class="card__title">Reparación Apple</h3>
-            <p class="card__text">
-              iPhone, iPad y Mac. Diagnóstico y reparación con pruebas finales.
-            </p>
-            <ul class="card__list">
-              <li>Diagnóstico y solución</li>
-              <li>Optimización y limpieza</li>
-              <li>Soporte post-servicio</li>
-            </ul>
-            <a class="card__link" href="#contacto">Cotizar Apple →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">🖥️</div>
-            <h3 class="card__title">Reparación de computadoras</h3>
-            <p class="card__text">
-              PCs y laptops: rendimiento, software, hardware y mantenimiento.
-            </p>
-            <ul class="card__list">
-              <li>Instalación y optimización</li>
-              <li>Respaldo y recuperación</li>
-              <li>Mantenimiento preventivo</li>
-            </ul>
-            <a class="card__link" href="#contacto">Cotizar PC →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon" aria-hidden="true">🌐</div>
-            <h3 class="card__title">Creación de páginas web</h3>
-            <p class="card__text">
-              Sitios modernos, rápidos y listos para vender (móvil + SEO básico).
-            </p>
-            <ul class="card__list">
-              <li>Diseño profesional</li>
-              <li>Landing / catálogo</li>
-              <li>Conexión WhatsApp</li>
-            </ul>
-            <a class="card__link" href="#contacto">Cotizar web →</a>
-          </article>
-        </div>
+      <div class="wrap">
+        <h2>Servicios</h2>
+        <p>Elegí lo que necesitás. Te guiamos en el resto.</p>
       </div>
     </section>
 
-    <!-- ✅ Venta Apple -->
-    <section class="section section--soft" id="venta-apple">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2 class="section__title">Venta de dispositivos Apple</h2>
-          <p class="section__subtitle">
-            Tocá una categoría para ver disponibilidad. “Quiero cotizar este” abre WhatsApp con el nombre del producto.
-          </p>
+    <section class="section" id="venta">
+      <div class="wrap">
+        <h2>Venta de dispositivos Apple</h2>
+        <p>Tocá una categoría para ver disponibilidad. “Quiero cotizar este” abre WhatsApp con el producto.</p>
+
+        <div class="saleWrap">
+          <div class="accordion" id="saleAccordion">
+
+            <!-- ✅ iPhone -->
+            <div class="acc open" data-cat="iPhone">
+              <button class="accHead" type="button">
+                <div class="accLeft">
+                  <div class="accIcon">
+                    <img src="assets/img/products/iphone.png" alt="" onerror="this.style.display='none'">
+                  </div>
+                  <div>
+                    <div class="accTitle">iPhone</div>
+                    <div class="accHint">Modelos recientes disponibles</div>
+                  </div>
+                </div>
+                <div class="accRight">
+                  <span>Ver catálogo</span>
+                  <div class="chev">⌄</div>
+                </div>
+              </button>
+              <div class="accBody">
+                <div class="grid">
+                  <article class="pCard">
+                    <div class="pImg">
+                      <!-- 📌 Poné esta imagen en: assets/img/products/iphone-15-pro.png -->
+                      <img src="assets/img/products/iphone-15-pro.png" alt="iPhone 15 Pro"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">iPhone 15 Pro</div>
+                      <div class="pMeta">256GB • Negro Titanio</div>
+                      <button class="pBtn" data-product="iPhone 15 Pro (256GB, Negro Titanio)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+
+                  <article class="pCard">
+                    <div class="pImg">
+                      <!-- 📌 Poné esta imagen en: assets/img/products/iphone-15.png -->
+                      <img src="assets/img/products/iphone-15.png" alt="iPhone 15"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">iPhone 15</div>
+                      <div class="pMeta">128GB • Azul</div>
+                      <button class="pBtn" data-product="iPhone 15 (128GB, Azul)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- ✅ iPad -->
+            <div class="acc" data-cat="iPad">
+              <button class="accHead" type="button">
+                <div class="accLeft">
+                  <div class="accIcon">
+                    <img src="assets/img/products/ipad.png" alt="" onerror="this.style.display='none'">
+                  </div>
+                  <div>
+                    <div class="accTitle">iPad</div>
+                    <div class="accHint">Tablets y modelos Pro/Air</div>
+                  </div>
+                </div>
+                <div class="accRight"><span>Ver catálogo</span><div class="chev">⌄</div></div>
+              </button>
+              <div class="accBody">
+                <div class="grid">
+                  <article class="pCard">
+                    <div class="pImg">
+                      <img src="assets/img/products/ipad-air.png" alt="iPad Air"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">iPad Air</div>
+                      <div class="pMeta">M2 • 128GB</div>
+                      <button class="pBtn" data-product="iPad Air (M2, 128GB)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- ✅ AirPods -->
+            <div class="acc" data-cat="AirPods">
+              <button class="accHead" type="button">
+                <div class="accLeft">
+                  <div class="accIcon">
+                    <img src="assets/img/products/airpods.png" alt="" onerror="this.style.display='none'">
+                  </div>
+                  <div>
+                    <div class="accTitle">AirPods</div>
+                    <div class="accHint">Audífonos originales y accesorios</div>
+                  </div>
+                </div>
+                <div class="accRight"><span>Ver catálogo</span><div class="chev">⌄</div></div>
+              </button>
+              <div class="accBody">
+                <div class="grid">
+                  <article class="pCard">
+                    <div class="pImg">
+                      <img src="assets/img/products/airpods-pro.png" alt="AirPods Pro"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">AirPods Pro</div>
+                      <div class="pMeta">2da gen • USB-C</div>
+                      <button class="pBtn" data-product="AirPods Pro (2da gen, USB-C)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- ✅ Apple Watch -->
+            <div class="acc" data-cat="Apple Watch">
+              <button class="accHead" type="button">
+                <div class="accLeft">
+                  <div class="accIcon">
+                    <img src="assets/img/products/watch.png" alt="" onerror="this.style.display='none'">
+                  </div>
+                  <div>
+                    <div class="accTitle">Apple Watch</div>
+                    <div class="accHint">Series y correas</div>
+                  </div>
+                </div>
+                <div class="accRight"><span>Ver catálogo</span><div class="chev">⌄</div></div>
+              </button>
+              <div class="accBody">
+                <div class="grid">
+                  <article class="pCard">
+                    <div class="pImg">
+                      <img src="assets/img/products/apple-watch.png" alt="Apple Watch"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">Apple Watch</div>
+                      <div class="pMeta">Serie • Tamaño</div>
+                      <button class="pBtn" data-product="Apple Watch (consultar serie y tamaño)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- ✅ Mac -->
+            <div class="acc" data-cat="Mac">
+              <button class="accHead" type="button">
+                <div class="accLeft">
+                  <div class="accIcon">
+                    <img src="assets/img/products/mac.png" alt="" onerror="this.style.display='none'">
+                  </div>
+                  <div>
+                    <div class="accTitle">Mac</div>
+                    <div class="accHint">MacBook, iMac y más</div>
+                  </div>
+                </div>
+                <div class="accRight"><span>Ver catálogo</span><div class="chev">⌄</div></div>
+              </button>
+              <div class="accBody">
+                <div class="grid">
+                  <article class="pCard">
+                    <div class="pImg">
+                      <img src="assets/img/products/macbook.png" alt="MacBook"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">MacBook</div>
+                      <div class="pMeta">Modelo • Chip • RAM</div>
+                      <button class="pBtn" data-product="MacBook (consultar modelo y specs)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- ✅ Accesorios -->
+            <div class="acc" data-cat="Accesorios">
+              <button class="accHead" type="button">
+                <div class="accLeft">
+                  <div class="accIcon">
+                    <img src="assets/img/products/accesorios.png" alt="" onerror="this.style.display='none'">
+                  </div>
+                  <div>
+                    <div class="accTitle">Accesorios</div>
+                    <div class="accHint">Cargadores, cables, fundas, etc.</div>
+                  </div>
+                </div>
+                <div class="accRight"><span>Ver catálogo</span><div class="chev">⌄</div></div>
+              </button>
+              <div class="accBody">
+                <div class="grid">
+                  <article class="pCard">
+                    <div class="pImg">
+                      <img src="assets/img/products/cargadores.png" alt="Cargadores"
+                           onerror="this.style.display='none'">
+                    </div>
+                    <div class="pBody">
+                      <div class="pName">Cargadores</div>
+                      <div class="pMeta">USB-C • Original / Premium</div>
+                      <button class="pBtn" data-product="Cargadores (USB-C / Original / Premium)">Quiero cotizar este</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div class="catalog reveal">
-          <!-- iPhone -->
-          <details class="cat">
-            <summary class="cat__head">
-              <span class="cat__left">
-                <span class="cat__icon">📱</span>
-                <span class="cat__title">iPhone</span>
-              </span>
-              <span class="cat__cta">Ver catálogo</span>
-            </summary>
-
-            <div class="cat__body">
-              <div class="prod-grid">
-                <article class="prod">
-                  <div class="prod__imgwrap">
-                    <img class="prod__img" src="assets/img/products/iphone-15-pro.png" alt="iPhone 15 Pro">
-                  </div>
-                  <div class="prod__info">
-                    <h3 class="prod__name">iPhone 15 Pro</h3>
-                    <p class="prod__meta">256GB • Negro Titanio</p>
-                    <p class="prod__price">₡—</p>
-                    <button class="btn btn--primary btn--full wa-product" type="button"
-                      data-product="iPhone 15 Pro (256GB • Negro Titanio)">
-                      Quiero cotizar este
-                    </button>
-                  </div>
-                </article>
-
-                <article class="prod">
-                  <div class="prod__imgwrap">
-                    <img class="prod__img" src="assets/img/products/iphone-15.png" alt="iPhone 15">
-                  </div>
-                  <div class="prod__info">
-                    <h3 class="prod__name">iPhone 15</h3>
-                    <p class="prod__meta">128GB • Azul</p>
-                    <p class="prod__price">₡—</p>
-                    <button class="btn btn--primary btn--full wa-product" type="button"
-                      data-product="iPhone 15 (128GB • Azul)">
-                      Quiero cotizar este
-                    </button>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </details>
-
-          <!-- iPad -->
-          <details class="cat">
-            <summary class="cat__head">
-              <span class="cat__left">
-                <span class="cat__icon">📲</span>
-                <span class="cat__title">iPad</span>
-              </span>
-              <span class="cat__cta">Ver catálogo</span>
-            </summary>
-
-            <div class="cat__body">
-              <div class="prod-grid">
-                <article class="prod">
-                  <div class="prod__imgwrap">
-                    <img class="prod__img" src="assets/img/products/ipad.png" alt="iPad">
-                  </div>
-                  <div class="prod__info">
-                    <h3 class="prod__name">iPad</h3>
-                    <p class="prod__meta">Wi-Fi • 64GB</p>
-                    <p class="prod__price">₡—</p>
-                    <button class="btn btn--primary btn--full wa-product" type="button"
-                      data-product="iPad (Wi-Fi • 64GB)">
-                      Quiero cotizar este
-                    </button>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </details>
-
-          <!-- AirPods -->
-          <details class="cat">
-            <summary class="cat__head">
-              <span class="cat__left">
-                <span class="cat__icon">🎧</span>
-                <span class="cat__title">AirPods</span>
-              </span>
-              <span class="cat__cta">Ver catálogo</span>
-            </summary>
-
-            <div class="cat__body">
-              <div class="prod-grid">
-                <article class="prod">
-                  <div class="prod__imgwrap">
-                    <img class="prod__img" src="assets/img/products/airpods.png" alt="AirPods">
-                  </div>
-                  <div class="prod__info">
-                    <h3 class="prod__name">AirPods</h3>
-                    <p class="prod__meta">Originales • Garantía</p>
-                    <p class="prod__price">₡—</p>
-                    <button class="btn btn--primary btn--full wa-product" type="button"
-                      data-product="AirPods (Originales • Garantía)">
-                      Quiero cotizar este
-                    </button>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </details>
-
-          <!-- Mac -->
-          <details class="cat">
-            <summary class="cat__head">
-              <span class="cat__left">
-                <span class="cat__icon">💻</span>
-                <span class="cat__title">Mac</span>
-              </span>
-              <span class="cat__cta">Ver catálogo</span>
-            </summary>
-
-            <div class="cat__body">
-              <div class="prod-grid">
-                <article class="prod">
-                  <div class="prod__imgwrap">
-                    <img class="prod__img" src="assets/img/products/macbook.png" alt="MacBook">
-                  </div>
-                  <div class="prod__info">
-                    <h3 class="prod__name">MacBook</h3>
-                    <p class="prod__meta">Air/Pro • Consultar</p>
-                    <p class="prod__price">₡—</p>
-                    <button class="btn btn--primary btn--full wa-product" type="button"
-                      data-product="MacBook (Air/Pro • Consultar)">
-                      Quiero cotizar este
-                    </button>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </details>
-
-          <!-- Accesorios -->
-          <details class="cat">
-            <summary class="cat__head">
-              <span class="cat__left">
-                <span class="cat__icon">🔌</span>
-                <span class="cat__title">Accesorios</span>
-              </span>
-              <span class="cat__cta">Ver catálogo</span>
-            </summary>
-
-            <div class="cat__body">
-              <div class="prod-grid">
-                <article class="prod">
-                  <div class="prod__imgwrap">
-                    <img class="prod__img" src="assets/img/products/cargadores.png" alt="Cargadores y cables">
-                  </div>
-                  <div class="prod__info">
-                    <h3 class="prod__name">Cables y cargadores</h3>
-                    <p class="prod__meta">USB-C / Lightning • Original/Calidad</p>
-                    <p class="prod__price">₡—</p>
-                    <button class="btn btn--primary btn--full wa-product" type="button"
-                      data-product="Accesorios: Cables y cargadores (USB-C / Lightning)">
-                      Quiero cotizar este
-                    </button>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <p class="hint reveal" style="margin-top:12px;">
-          Tip: cambiá “₡—” por tus precios y editá los nombres cuando quieras.
-        </p>
       </div>
     </section>
 
-    <!-- Process -->
-    <section class="section section--soft" id="proceso">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2 class="section__title">Proceso simple. Resultado profesional.</h2>
-          <p class="section__subtitle">Te decimos qué pasa, cuánto cuesta y cuánto tarda.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step reveal">
-            <p class="step__num">01</p>
-            <h3 class="step__title">Diagnóstico</h3>
-            <p class="step__text">Revisamos tu equipo/seguridad/sitio y te damos opciones.</p>
-          </div>
-          <div class="step reveal">
-            <p class="step__num">02</p>
-            <h3 class="step__title">Cotización</h3>
-            <p class="step__text">Precio claro y opciones por prioridad y presupuesto.</p>
-          </div>
-          <div class="step reveal">
-            <p class="step__num">03</p>
-            <h3 class="step__title">Trabajo</h3>
-            <p class="step__text">Ejecución ordenada, pruebas y checklist final.</p>
-          </div>
-          <div class="step reveal">
-            <p class="step__num">04</p>
-            <h3 class="step__title">Entrega</h3>
-            <p class="step__text">Te explicamos lo realizado y recomendaciones.</p>
-          </div>
-        </div>
+    <section class="section" id="proceso">
+      <div class="wrap">
+        <h2>Proceso simple. Resultado profesional.</h2>
+        <p>Diagnóstico → Cotización → Reparación/Entrega → Soporte.</p>
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section" id="faq">
-      <div class="container">
-        <div class="section__head reveal">
-          <h2 class="section__title">Preguntas frecuentes</h2>
-          <p class="section__subtitle">Respuestas rápidas para decidir tranquilo.</p>
-        </div>
-
-        <div class="faq">
-          <details class="faq__item reveal">
-            <summary>¿Dan diagnóstico antes de reparar?</summary>
-            <p>Sí. Primero evaluamos y luego te damos opciones y cotización.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Instalan cámaras en casas y negocios?</summary>
-            <p>Sí. Diseñamos cobertura, instalamos, configuramos y dejamos funcionando.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿También hacen páginas web?</summary>
-            <p>Sí. Hacemos landing pages y sitios modernos con WhatsApp y SEO básico.</p>
-          </details>
-        </div>
+      <div class="wrap">
+        <h2>FAQ</h2>
+        <p>¿Dudas? Escribinos y te ayudamos.</p>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section section--soft" id="contacto">
-      <div class="container contact">
-        <div class="contact__left reveal">
-          <h2 class="section__title">Hablemos.</h2>
-          <p class="section__subtitle">Cuéntanos qué necesitas y te respondemos con una ruta de solución.</p>
-
-          <div class="contact__box">
-            <p class="contact__label">WhatsApp</p>
-            <a class="contact__value" id="waLink" href="#" target="_blank" rel="noreferrer">Escribir por WhatsApp</a>
-            <p class="hint">Luego cambiamos el número por el tuyo.</p>
-          </div>
-
-          <div class="contact__box">
-            <p class="contact__label">Correo</p>
-            <a class="contact__value" href="mailto:info@icaretechcr.com">info@icaretechcr.com</a>
-          </div>
-        </div>
-
-        <form class="form reveal" onsubmit="return false">
-          <div class="form__row">
-            <label>
-              <span>Nombre</span>
-              <input type="text" placeholder="Tu nombre" required />
-            </label>
-            <label>
-              <span>Teléfono</span>
-              <input type="tel" placeholder="Tu número" />
-            </label>
-          </div>
-
-          <label>
-            <span>Servicio</span>
-            <select>
-              <option>Cámaras y alarmas</option>
-              <option>Reparación Apple</option>
-              <option>Reparación de computadoras</option>
-              <option>Creación de páginas web</option>
-              <option>Venta de dispositivos Apple</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Mensaje</span>
-            <textarea rows="5" placeholder="Describe el problema o lo que necesitas..."></textarea>
-          </label>
-
-          <button class="btn btn--primary btn--full" type="submit">Enviar</button>
-          <p class="hint">Formulario visual (luego lo conectamos a un backend si quieres).</p>
-        </form>
+    <section class="section" id="contacto">
+      <div class="wrap">
+        <h2>Contacto</h2>
+        <p>Presioná “Cotizar” para abrir WhatsApp.</p>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="container footer__inner">
-        <p>© <span id="year"></span> iCare Tech CR. Todos los derechos reservados.</p>
-        <a href="#inicio" class="footer__link">Volver arriba ↑</a>
+      <div class="wrap">
+        <div>© <span id="year"></span> iCare Tech CR</div>
       </div>
     </footer>
-
-    <!-- Floating WhatsApp -->
-    <a class="fab" id="fabWa" href="#" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-      💬
-    </a>
   </main>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    // ====== CONFIG ======
+    const PHONE = "50685836365"; // <-- tu WhatsApp (sin +)
+    const DEFAULT_MSG = "Hola, quiero una cotización de iCare Tech CR";
+
+    // Año
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // WhatsApp helpers
+    function waLink(message){
+      return "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(message);
+    }
+    function openWA(message){
+      window.open(waLink(message), "_blank", "noopener");
+    }
+
+    // Botones cotizar
+    document.getElementById("btnCotizarTop").addEventListener("click", () => openWA(DEFAULT_MSG));
+    document.getElementById("btnCotizarHero").addEventListener("click", () => openWA(DEFAULT_MSG));
+
+    // Menú móvil
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    if(menuBtn){
+      menuBtn.addEventListener("click", () => {
+        const isOpen = mobileNav.classList.toggle("show");
+        menuBtn.setAttribute("aria-expanded", String(isOpen));
+      });
+      mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+        mobileNav.classList.remove("show");
+        menuBtn.setAttribute("aria-expanded", "false");
+      }));
+    }
+
+    // Accordion
+    document.querySelectorAll(".acc").forEach(acc => {
+      const head = acc.querySelector(".accHead");
+      head.addEventListener("click", () => {
+        const open = acc.classList.toggle("open");
+        // opcional: cerrar otros
+        document.querySelectorAll(".acc").forEach(o => { if(o !== acc) o.classList.remove("open"); });
+        if(!open) acc.classList.add("open"); // mantiene uno abierto
+      });
+    });
+
+    // Botones de productos -> WhatsApp con nombre del producto
+    document.querySelectorAll(".pBtn[data-product]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const prod = btn.getAttribute("data-product");
+        openWA("Hola, quiero cotizar este producto: " + prod);
+      });
+    });
+  </script>
 </body>
 </html>
